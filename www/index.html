@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+  </head>
+  <body ng-app="mainIndex" ng-controller="MyController">
+
+  <!--Main Container-->
+
+  <ion-nav-view></ion-nav-view>
+
+  <!--main nav bar is color yellow-->
+  
+  <ion-nav-bar class="bar-dark">
+  
+  <!--not sure if need back button as this is a tab setup-->
+  <!--<ion-nav-back-button class="button-clear">
+    <i class="ion-arrow-left-c"></i> back
+  </ion-nav-back-button>-->
+
+<!--dont know why the goes up instead of below i wanted no color of tab-->
+<ion-tabs class="tabs-stripe" tabs-background-positive tabs-color-light>
+
+
+  <ion-tab icon="ion-home" ui-sref="home">
+  <ion-nav-view name="Grafo"></ion-nav-view>
+  </ion-tab>
+  <ion-tab icon="ion-pound" ui-sref="about">
+  <ion-nav-view name="About Grafo"></ion-nav-view>
+  </ion-tab>
+</ion-tabs>
+
+</ion-nav-bar>
+
+
+    <script type="text/ng-template" id="home.html">
+  
+  <ion-view title="grafo"> 
+        <ion-nav-buttons side="right" ng-show="false">
+        <button class="button button-icon button-clear ion-more" ng-click="openPopover($event)">
+        </button>
+        </ion-nav-buttons>
+      <ion-nav-title>
+      <img src="img/logo.png">
+      </ion-nav-title>     
+
+
+      <ion-content padding="true" ng-controller="titleController">
+
+          <div class="list card" ng-repeat="x in names">
+
+            <div class="item item-avatar">
+              <img src="img/LB.png">
+              <h2>
+                {{ x.Name }}
+              </h2>
+              <p>
+              {{ x.Theme }}
+              </p>
+            </div>
+
+            <div class="item item-image">
+                <img ng-src="{{ x.Image }}" ui-sref="{{ x.Image }}">
+            </div>
+              <!--<button class="button button-clear ion-android-restaurant" ng-click="modal.show()"> view full image {{ x.Name }} </button>-->
+
+
+
+          </div>
+ 
+
+
+
+    </ion-content>
+    </ion-view>
+
+    </script>
+
+    <script id="templates/modal.html" type="text/ng-template">
+      <ion-modal-view>
+        <ion-header-bar class="bar bar-header bar-energized">
+          <h1 class="title">Recipe</h1>
+          <button class="button button-clear ion-close-round" ng-click="modal.hide()"></button>
+        </ion-header-bar>
+        <ion-content class="padding">
+
+      <div class="card">
+      <div class="item item-text-wrap" ng-repeat="x in names">
+         How to recipe goes here
+          <h2>
+            
+          </h2> 
+      </div>
+
+        </ion-content>
+      </ion-modal-view>
+
+      </script>
+
+
+      <script type="text/ng-template" id="about.html">
+  <ion-view title="Give me some l.o.v.e :)">
+        <ion-nav-buttons side="right" ng-show="false">
+        <button class="button button-icon button-clear ion-more" ng-click="openPopover($event)">
+        </button>
+        </ion-nav-buttons>
+    <ion-nav-title>
+      <img src="img/logoabout.png">
+    </ion-nav-title>     
+
+    <ion-content padding="true">
+
+    <div class="card" id="aboutku">
+      <div class="item item-text-wrap">
+         <i class="icon ion-android-happy"></i>
+         <i class="icon ion-android-happy"></i>
+         <i class="icon ion-android-favorite"></i>
+         <h3 >Grafo is a colleaction of infographics from different source in various categories</h3>
+         <h3 >Disclaimer: The collections of inforgraphics is solely own by different creators and is not own by grafo application or by the developer of this application.</h3>
+         <i class="icon ion-leaf"></i>
+         <i class="icon ion-icecream"></i>
+      </div>
+    </div>
+    </ion-content>
+  </ion-view>
+  </script>
+
+
+ <script type="text/ng-template" id="meetme.html">
+  <ion-view title="Meet the developer">
+          <ion-nav-buttons side="right" ng-show="false">
+        <button class="button button-icon button-clear ion-more" ng-click="openPopover($event)">
+        </button>
+        </ion-nav-buttons>
+
+    <ion-nav-title>
+      <img src="img/logocomment.png">
+    </ion-nav-title>     
+
+    <ion-content padding="true">
+
+
+      <div class="card">
+      <div class="item item-text-wrap">
+         
+      </div>
+
+<div class="list card">
+
+  <a href="#" onClick="window.open('https://www.facebook.com/','_system','location=yes');" class="item item-icon-left">
+    <i class="icon ion-social-facebook-outline"></i>
+    Facebook
+  </a>
+
+  <a href="#" onClick="window.open('https://plus.google.com/','_system','location=yes');return false;" class="item item-icon-left">
+    <i class="icon ion-social-googleplus"></i>
+    Gmail
+  </a>
+</div>
+    </ion-content>
+  </ion-view>
+  </script>
+
+<script type="text/ng-template" id="notes.html">
+  <ion-view title="Meet the developer">
+          <ion-nav-buttons side="right" ng-show="false">
+        <button class="button button-icon button-clear ion-more" ng-click="openPopover($event)">
+        </button>
+        </ion-nav-buttons>
+
+    <ion-nav-title>
+      <img src="img/logo2about.png">
+    </ion-nav-title>     
+
+    <ion-content padding="true">
+
+
+      <div class="card">
+      <div class="item item-text-wrap">
+         
+      </div>
+
+<div class="list">
+  <label class="item item-input">
+    <input type="text" placeholder="First Name">
+  </label>
+  <label class="item item-input">
+    <input type="text" placeholder="Last Name">
+  </label>
+  <label class="item item-input">
+    <textarea placeholder="Comments"></textarea>
+  </label>
+<button class="button button-full button-balanced">
+  submit
+</button>
+</div>
+
+    </ion-content>
+  </ion-view>
+  </script>
+
+
+
+  <script id="my-popover.html" type="text/ng-template">
+  <ion-popover-view>
+    <ion-content>
+    <div class="list" ng-click="popover.hide()">
+      <a class="item item-icon-left" ui-sref="about">
+       <i class="icon ion-ios-heart"></i>
+              About Grafo
+             </a>
+
+      <a class="item item-icon-left" ui-sref="home">
+       <i class="icon ion-ios-nutrition"></i>
+              Grafo Home
+             </a>
+      <a class="item item-icon-left" ui-sref="meetme">
+       <i class="icon ion-ios-body"></i>
+              Meet the Developer
+             </a>
+    </div>
+    </ion-content>
+  </ion-popover-view>
+</script>
+
+
+
+    <script id="new-task.html" type="text/ng-template">
+
+        <div class="modal">
+
+          <!-- Modal header bar -->
+          <ion-header-bar class="bar-secondary">
+            <h1 class="title">New Task</h1>
+            <button class="button button-clear button-positive" ng-click="closeNewTask()">Cancel</button>
+
+          </ion-header-bar>
+
+          <!-- Modal content area -->
+          <ion-content>
+
+            <form ng-submit="createTask(task)">
+              <div class="list">
+                <label class="item item-input">
+                  <input type="text" placeholder="Choose grocery ingredients" ng-model="task.title">
+                </label>
+              </div>
+              <div class="padding">
+                <button type="submit" class="button button-block button-positive">New Ingredients</button>
+              </div>
+            </form>
+
+          </ion-content>
+
+        </div>
+
+      </script>
+
+
+
+  </body>
+</html>
